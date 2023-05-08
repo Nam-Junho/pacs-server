@@ -1,0 +1,44 @@
+HELP.md
+.gradle
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
+/files/20230508/10/DICOM_20230508_101106_6798033561356718527613646.dcm
+/files/20230508/10/DICOM_20230508_101106_6868617645592230757294947.dcm
+/files/20230508/10/DICOM_20230508_101106_65009718036190619568771353.dcm
+/files/20230508/10/DICOM_20230508_101248_9317579591672816697642.dcm
+/files/20230508/10/DICOM_20230508_101248_91914027612091246143349.dcm
+/files/20230508/10/DICOM_20230508_101248_93510058045757515775536.dcm
+/logs/pacs-server.log

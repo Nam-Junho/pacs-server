@@ -1,0 +1,44 @@
+version: "3.9"
+services:
+  pacs:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+
+    container_name: "pacs"
+    image: pacs-server:${VERSION}
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "2"
+    expose:
+      - ${SERVER_PORT}
+      - ${PACS_PORT}
+    ports:
+      - ${SERVER_PORT}:${SERVER_PORT}
+      - ${PACS_PORT}:${PACS_PORT}/tcp
+    restart: always
+    volumes:
+      - ${BASE_PATH}/pacs/logs:/logs
+      - ${BASE_PATH}/pacs/files:/files
+      - ${BASE_PATH}/pacs/tmp:/tmp
+    deploy:
+      mode: replicated
+      replicas: 1
+      resources:
+        limits:
+          cpus: '1'
+          memory: 2048M
+        reservations:
+          memory: 2048M
+    environment:
+      TZ: ${BASE_TZ}
+      SPRING_PROFILE: prod
+      JDK_JAVA_OPTIONS: >-
+        -Dserver.port=${SERVER_PORT}
+        -Dpacs.aet=${PACS_AET}
+        -Dpacs.bind-address="0.0.0.0"
+        -Dpacs.port=${PACS_PORT}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
